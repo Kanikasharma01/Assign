@@ -12,7 +12,17 @@ public class MyClass{
 				String nextKey=keys[j];
 				int val=map.get(key);		
 				int nextVal=map.get(nextKey);
+				Date date=new SimpleDateFormat(s: "YYYY-MM-DD").parse(key);
+				Date nextDate=new SimpleDateFormat(s: "YYYY-MM-DD").parse(nextKey);
+				
+				long diffInMillies=Math.abs(date.getTime()-nextDate.getTime());
+				int diff=(int)TimeUnit.DAYS.convert(diffInMillies,TimeUnit.MILLISECONDS);
+				int avgValue=Math.abs(nextVal-val)/diff;
 			}
+			return returnMap;
+		}
+		catch(Exception e){
+		
 		}
 	}
 }
